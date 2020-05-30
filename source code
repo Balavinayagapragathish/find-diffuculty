@@ -1,0 +1,113 @@
+
+
+import java.util.*;
+import java.io.*;
+class difficult
+{
+	public static int easy=0,medium=0,hard=0;
+	public static int time(int timeTaken,int totalTime)
+	{
+		if(timeTaken<(1/4)*totalTime) 
+		easy++;
+		else if(timeTaken>(1/4)*totalTime && timeTaken<(3/4)*totalTime) 
+		medium++;
+		else
+		hard++;
+
+	}
+	public static void mcq(int numberOfTimeChanged)
+	{
+		
+		if(numberOfTimeChanged==1)
+				easy++;
+		else 	if(numberOfTimeChanged==2)
+			medium++;
+		else 	if(numberOfTimeChanged>2)
+			hard++;
+	
+	}
+	public static void program(int NumberOfTimeCompiled)
+	{
+		if(NumberOfTimeCompiled<=5)
+				easy++;
+		else 	if(NumberOfTimeCompiled<=10)
+			medium++;
+		else 	if(NumberOfTimeCompiled>10)
+			hard++;
+		
+	}
+	public static void hint(int numberOfHintsUsed)
+	{
+		if(numberOfHintsUsed<=2)
+				easy++;
+		else 	if(numberOfHintsUsed<=3)
+			medium++;
+		else 	if(numberOfHintsUsed>3)
+			hard++;
+	
+	}
+	public static void program1(String language)
+	{
+		if(language.equalsTo('c'))
+			easy++;
+		else if(language.equalsTo("c++"))
+			medium++;
+		else 
+			hard++;
+	}
+	public static void main(String args[])
+	{
+		Scanner s=new Scanner(System.in);
+		String TypeOfQuestion = s.nextLine();
+		String manualDifficulty =s.nextLine();
+		if(manualDifficulty.equalsTo("easy"))
+			easy+=5;
+		else if(manualDifficulty.equalsTo("medium"))
+			medium+=5;
+		else if(manualDifficulty.equalsTo("hard"))
+			hard+=5;
+		int timeTaken=s.nextInt();
+		int totalTime=s.nextInt();
+		time(timeTaken,totalTime);
+		if(TypeOfQuestion.equalsTo("mcq"))
+		{
+			int numberOfTimeChanged=s.nextInt();
+			mcq(numberOfTimeChanged);
+		}
+		else if(TypeOfQuestion.equalsTo("program"))
+		{
+			int NumberOfTimeCompiled=s.nextInt();
+			program(NumberOfTimeCompiled);
+		}
+		int numberOfHintsUsed=s.nextInt();
+		hint(numberOfHintsUsed);
+		 if(TypeOfQuestion.equalsTo("program"))
+			{
+			String language=s.nextLine();
+				program1(language);
+			}
+		 String feedback=s.nextLine();
+		 if(feedback.equalsTo("easy"))
+			 easy++;
+		 else if(feedback.equalsTo("hard"))
+			 hard++;
+		 else
+			 medium++;
+		 int right=s.nextInt();
+		 int wrong=s.nextInt();
+		 int partial=s.nextInt();
+		 if(right>2*wrong)
+			 easy++;
+		 else if(wrong>2*right)
+			 hard++;
+		 else
+			 medium++;
+		 if(easy>=medium && easy>=hard)
+			 System.out.print("easy");
+		 else if(easy<=medium && medium>=hard)
+			 System.out.print("medium");
+		 else
+			 System.out.print("Hard");
+		 
+	}
+}
